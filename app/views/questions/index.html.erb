@@ -1,0 +1,61 @@
+<script type="text/javascript">
+  function navigate(value) {
+    switch (value) {
+      case "football":
+        document.location.href = "http://localhost:3000/questions/11";
+        break;
+      case "cricket":
+        document.location.href = "http://localhost:3000/questions/1";
+        break;
+      case "friends":
+        document.location.href = "http://localhost:3000/questions/21";
+        break;
+      case "got":
+        document.location.href = "http://localhost:3000/questions/31";
+        break;
+      
+
+    }
+  }
+</script>
+<h1>Following quizzes are available: </h1>
+<p>
+<form> 
+</br> </br> </br> </br> 
+<select onchange="navigate(this.value)" style="height: 29px;
+   overflow: hidden;
+   width: 300px;
+   background-color: rgb(52, 58, 64);
+   border-radius:7px;border:2px solid #AAAAAA;
+   color: white; " id="subgenreselect">
+    <option disabled="disabled" selected="selected">Select Genre and sub genre:</option>
+  <optgroup label="Sports">
+  	
+     <option value="cricket">Cricket</option>
+     <option value="football">Football</option>
+  </optgroup>
+  <optgroup label="TV Series">
+     <option value="friends">F.R.I.E.N.D.S</option>
+     <option value="got">GoT</option>
+  </optgroup>
+</select>
+	
+</p>
+<br><br><br><br><br><br><br><br>
+<%- if current_user && (current_user.pause==1 || current_user.pause1==1 || current_user.pause2==1 || current_user.pause3==1) %>
+    <h4> OMG!! Looks like you've some unfinished quizzes</h4>
+    <%- if current_user.pause==1 %>
+    <a href="http://localhost:3000/questions/<%= current_user.qno %>"> Continue to Cricket...</a><br/>
+    <% end %>
+    <%- if current_user.pause1==1 %>
+    <a href="http://localhost:3000/questions/<%= current_user.qno1 %>"> Continue to Football...</a><br/>
+    <% end %>
+    <%- if current_user.pause2==1 %>
+    <a href="http://localhost:3000/questions/<%= current_user.qno2 %>"> Continue to F.R.I.E.N.D.S...</a></br>
+    <% end %>
+    <%- if current_user.pause3==1 %>
+    <a href="http://localhost:3000/questions/<%= current_user.qno3 %>"> Continue to Game of Thrones...</a></br
+    <% end %>
+
+<% end %> 
+

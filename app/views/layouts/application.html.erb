@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>QuizzingApp</title>
+
+    <!-- Bootstrap core CSS -->
+   
+
+    <!-- Custom styles for this template -->
+    <style>
+      body {
+        padding-top: 54px;
+      }
+      @media (min-width: 992px) {
+        body {
+          padding-top: 56px;
+        }
+      }
+
+    </style>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "bootstrap.min.css" %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+    <%= javascript_include_tag "application.js"%>
+  </head>
+
+  
+
+  <body style="padding-top: 94px;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <%= link_to "Quiz down!", root_url, class: "navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <%- if current_user %>
+             <li class="nav-item active">
+              <%= link_to "New Quiz" , questions_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "Leaderboard" , posts_path, class: "nav-link" %>
+            </li>
+             <li class="nav-item">
+             <%= link_to "Logout" , destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"}, class: "nav-link" %>
+            </li>
+            <% elsif current_admin %>
+              <li class="nav-item">
+                  <%= link_to "Home" , admin_home_path , class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to "Logout" , destroy_admin_session_path, method: :delete, data: {confirm: "Are you sure?"}, class: "nav-link" %>
+              </li>
+            <% else %> 
+              <li class="nav-item">
+                	<%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+              	<%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "I'm an admin",  new_admin_session_path, class: "nav-link" %>
+              </li>
+            <% end %> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-lg-12 text-center">
+    			<% flash.each do |a,b| %>
+    				<div class="alert alert-success"> <%= b %> </div>
+    			<% end %>
+   				 <%= yield %>
+    		</div>
+    	</div>
+    </div>
+    <style> body{padding-top: 70px;}</style>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<h1> <%= link_to "Questions" , questions_path %>
+</h1>
+<br/>
+<% @user.each do |users| %>
+  <h3><%= users.email %> </h3>
+  <h5> Cricket - <%= users.quiza %> Points </h5>
+  <h5> Football - <%= users.quizb %> Points </h5>
+  <h5> F.R.I.E.N.D.S - <%= users.quizc %> Points </h5>
+  <h5> GoT - <%= users.quizd %> Points </h5>
+  <br/>
+<% end %>

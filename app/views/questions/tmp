@@ -1,0 +1,164 @@
+
+
+function inc(valuee) {
+	alert("hiiii");
+  	hey = <%= @question.id/10 %>
+  	if(hey==0)
+  	{
+  		if(valuee==1)
+  		{
+  			alert(valuee);
+  			if(<%= @question.foptiona %> == 1)
+  			{
+  				<%= current_user.quiza += 10 %>
+  				<%= current_user.save %>
+			}
+  		}
+  		else if(valuee==2)
+  		{
+  			alert(valuee);
+  			if(<%= @question.foptionb %> == 1)
+  			{
+  				<%= current_user.quiza += 10 %>
+  				<%= current_user.save %>
+			}
+  		}
+  		else if(valuee==3)
+  		{
+  			alert(valuee);
+  			if(<%= @question.foptionc %> == 1)
+  			{
+  				<%= current_user.quiza += 10 %>
+  				<%= current_user.save %>
+			}
+  		}
+  		else
+  		{
+  			alert(valuee);
+  			if(<%= @question.foptiond %> == 1)
+  			{
+  				<%= current_user.quiza += 10 %>
+  				<%= current_user.save %>
+			}
+  		}
+  }
+  else if(hey==1)
+  	{
+	  	if(valuee==1)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptiona %> == 1)
+	  		{
+	  			<%= current_user.quizb += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	else if(valuee==2)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptionb %> == 1)
+	  		{
+	  			<%= current_user.quizb += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	else if(valuee==3)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptionc %> == 1)
+	  		{
+	  			<%= current_user.quizb += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	else if(valuee==4)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptiond %> == 1)
+	  		{
+	  			<%= current_user.quizb += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+  	}
+  	else if(hey==2)
+  	{
+	  	if(valuee==1)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptiona %> == 1)
+	  		{
+	  			<%= current_user.quizc += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	else if(valuee==2)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptionb %> == 1)
+	  		{
+	  			<%= current_user.quizc += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	else if(valuee==3)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptionc %> == 1)
+	  		{
+	  			<%= current_user.quizc += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	else if(valuee==4)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptiond %> == 1)
+	  		{
+	  			<%= current_user.quizc += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+  	} 
+  	else
+  	{
+	  	if(valuee==1)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptiona %> == 1)
+	  		{
+	  			<%= current_user.quizd += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	if(valuee==2)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptionb %> == 1)
+	  		{
+	  			<%= current_user.quizd += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	if(valuee==3)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptionc %> == 1)
+	  		{
+	  			<%= current_user.quizd += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+	  	if(valuee==4)
+	  	{
+	  		alert(valuee);
+	  		if(<%= @question.foptiond %> == 1)
+	  		{
+	  			<%= current_user.quizd += 10 %>
+	  			<%= current_user.save %>
+			}
+	  	}
+  	} 
+  
+ 
+  }

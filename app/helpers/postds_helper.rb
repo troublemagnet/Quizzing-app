@@ -1,0 +1,2 @@
+module PostdsHelper
+end

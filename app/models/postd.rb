@@ -1,0 +1,2 @@
+class Postd < ApplicationRecord
+end

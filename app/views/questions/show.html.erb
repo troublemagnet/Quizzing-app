@@ -1,0 +1,254 @@
+<script type="text/javascript">
+	 function changepage(value) {
+  	string1 = "http://localhost:3000/questions/";
+  	res = string1.concat(value.toString());
+	document.location.href = res;
+    }
+	function endquiz() {
+		document.location.href = "http://localhost:3000/";
+	}
+	function changestate(qid) {
+		
+		var blah= qid%10+1;
+			if(qid<11) {
+				$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/helperas/:id',
+       				data: { qno:qid },
+    				}).done(function(value)
+            		{
+             		   document.location.href = "http://localhost:3000";
+           			}).fail(function (jqXHR, textStatus) {
+    					alert(textStatus);
+						});
+           		}
+           	else if(qid >10 && qid<21) {
+				$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/helperbs/:id',
+       				data: { qno:qid },
+    				}).done(function(value)
+            		{
+             		   document.location.href = "http://localhost:3000";
+           			}).fail(function (jqXHR, textStatus) {
+    					alert(textStatus);
+						});
+           		}
+           	else if(qid >20 && qid<31) {
+				$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/helpercs/:id',
+       				data: { qno:qid },
+    				}).done(function(value)
+            		{
+             		   document.location.href = "http://localhost:3000";
+           			}).fail(function (jqXHR, textStatus) {
+    					alert(textStatus);
+						});
+           		}
+           	else if(qid >30 && qid<41) {
+				$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/helperds/:id',
+       				data: { qno:qid },
+    				}).done(function(value)
+            		{
+             		   document.location.href = "http://localhost:3000";
+           			}).fail(function (jqXHR, textStatus) {
+    					alert(textStatus);
+						});
+           		}
+           } 
+</script>
+<script type="text/javascript">
+
+	function checkanswertoq(qid) {
+		var elements = document.getElementsByName("ans");
+   			 for (var i = 0, l = elements.length; i < l; i++)
+  		    {
+        		if (elements[i].checked)
+        	{
+            	break;
+        	}
+    		}
+    		x=elements[i].value;
+		//alert(x);
+		temp = qid % 4;
+		//alert(temp);
+		if(x == temp)
+		{
+			//alert("chaloajaxkare");
+			//alert(qid);
+			if(qid <= 10)
+			{
+				//alert("almost there");
+					$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/posts/:id',
+    				}).done(function(value)
+            		{
+             		   alert( "Data Saved:");
+           			}).fail(function (jqXHR, textStatus) {
+    					alert("Correct Answer");
+						});
+           	}
+           	else if(qid <= 20 && qid > 10)
+			{
+				//alert("almost there");
+					$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/postbs/:id',
+    				}).done(function(value)
+            		{
+             		   alert( "Data Saved:");
+           			}).fail(function (jqXHR, textStatus) {
+    					alert("Correct Answer!");
+						});
+           	}
+           	else if(qid <= 30 && qid > 20)
+			{
+				//alert("almost there");
+					$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/postcs/:id',
+    				}).done(function(value)
+            		{
+             		   alert( "Data Saved:");
+           			}).fail(function (jqXHR, textStatus) {
+    					alert("Correct Answer!");
+						});
+           	}
+           	else if(qid <= 40 && qid > 30)
+			{
+				//alert("almost there");
+					$.ajax({
+        			type: "PATCH",
+       				dataType: "script",
+       				url: '/postds/:id',
+    				}).done(function(value)
+            		{
+             		   alert( "Data Saved:");
+           			}).fail(function (jqXHR, textStatus) {
+    					alert("Correct Answer!");
+						});
+           	}
+		}
+		else
+			alert("Wrong Answer :(");
+	}
+</script>
+<h1 style="text-transform: uppercase;"><%= @question.subgenre %></h1>
+<% temp = @question.id/10 %>
+<%- if temp==0 %>
+	<h3> In the genre <%= @question.genre %>, subgenre <%= @question.subgenre %> your score is <%= current_user.quiza %></h3>
+	<h3><%= @question.qno %>. <%= @question.qtitle %></h3>
+	</br>
+	</br>
+	<form>
+	<p style="color: rgb(33, 37, 41);">
+	
+	<input id ="ans" name="ans" type="radio" value="1"><%= @question.optiona %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="2"> <%= @question.optionb %> </input>  </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="3"> <%= @question.optionc %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="0"><%= @question.optiond %></input>  </br>
+	</br>
+	<input type="submit" class="btn btn-primary" value="SubmitAnswer" onclick="checkanswertoq(<%= @question.id %>)" />
+	
+	</p>
+	</form>
+<%- elsif temp==1 %>
+	<h3> In the genre <%= @question.genre %>, subgenre <%= @question.subgenre %> your score is <%= current_user.quizb %></h3>
+	<h3><%= @question.qno %>. <%= @question.qtitle %></h3>
+	</br>
+	</br>
+	<form>
+	<p style="color: rgb(33, 37, 41);">
+	<input id ="ans" name="ans" type="radio" value="1"><%= @question.optiona %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="2"> <%= @question.optionb %> </input>  </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="3"> <%= @question.optionc %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="0"><%= @question.optiond %></input>  </br>
+	</br>
+	<input type="submit" class="btn btn-primary" value="Submitans" onclick="checkanswertoq(<%= @question.id %>)" />
+	</p>
+	</form>
+<%- elsif temp==2 %>
+	<h3> In the genre <%= @question.genre %>, subgenre <%= @question.subgenre %> your score is <%= current_user.quizc %></h3>
+	<h3><%= @question.qno %>. <%= @question.qtitle %></h3>
+	</br>
+	</br>
+	<form>
+	<p style="color: rgb(33, 37, 41);">
+	<input id ="ans" name="ans" type="radio" value="1"><%= @question.optiona %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="2"> <%= @question.optionb %> </input>  </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="3"> <%= @question.optionc %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="0"><%= @question.optiond %></input>  </br>
+	</br>
+	<input type="submit" class="btn btn-primary" value="Submitans" onclick="checkanswertoq(<%= @question.id %>)" />
+	</p>
+	</form>
+<%- elsif temp==3 %>
+	<h3> In the genre <%= @question.genre %>, subgenre <%= @question.subgenre %> your score is <%= current_user.quizd %></h3>
+	<h3><%= @question.qno %>. <%= @question.qtitle %></h3>
+	</br>
+	</br>
+	<%- if @question.qno < 6 %>
+		<%- if @question.qno == 1 %>
+		<%= image_tag "1.jpg" %>
+		<% elsif @question.qno == 2 %>
+		<%= image_tag "2.jpg" %>
+		<% elsif @question.qno == 3 %>
+		<%= image_tag "3.jpg" %>
+		<% elsif @question.qno == 4 %>
+		<%= image_tag "4.jpg" %>
+		<% elsif @question.qno == 5 %>
+		<%= image_tag "5.jpg" %>
+		<% end %>
+	<% end %>
+	</br> </br>
+	<form>
+	<p style="color: rgb(33, 37, 41);">
+	<input id ="ans" name="ans" type="radio" value="1"><%= @question.optiona %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="2"> <%= @question.optionb %> </input>  </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="3"> <%= @question.optionc %> </input> </br>
+	</br>
+	<input id="ans" name="ans" type="radio" value="0"><%= @question.optiond %></input>  </br>
+	</br>
+	<input type="submit" class="btn btn-primary" value="Submitans" onclick="checkanswertoq(<%= @question.id %>)" />
+	</p>
+	</form>
+
+<% end %>
+
+
+
+<%- if @question.qno>1 %>
+	<% temp5=@question.id %> 
+	<input type="button" value="Previous" class="btn btn-primary" onclick="changepage(<%= temp5 - 1 %>)">
+<% end %>
+<input type="button" class="btn btn-primary" value="Pause and Quit" onclick="changestate(<%= @question.id %>)" />
+
+<%- if @question.qno<10 %>
+	<% temp1=@question.id %> 
+	<input type="button" class="btn btn-primary" value="Next" onclick="changepage(<%= temp1 + 1 %>)">
+<%- else %>
+	<button type="button" class="btn btn-primary" value="Finishquiz" onclick="endquiz()"> Finish quiz </button>
+<% end %>
+

@@ -1,0 +1,2 @@
+class Helpera < ApplicationRecord
+end

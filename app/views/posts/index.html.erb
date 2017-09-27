@@ -1,0 +1,35 @@
+<h1>Hello! You've signed in <%= current_user.sign_in_count %> times. </h1>
+<p>
+<ol>
+	<h2> You've attempted : </h2>
+		<%- if current_user.quiza!=0 %>
+		 <h5><li>Cricket - <%= current_user.quiza %> Points  </li></h5>
+		<% end %> 
+		<%- if current_user.quizb!=0 %>
+		 <h5><li>Football - <%= current_user.quizb %> Points </li></h5>
+		<% end %> 
+		<%- if current_user.quizc!=0 %>
+		 <h5><li>F.R.I.E.N.D.S - <%= current_user.quizc %> Points </li></h5>
+		 <% end %> 
+		<%- if current_user.quizd!=0 %>
+		 <h5><li>GoT - <%= current_user.quizd %> Points</li></h5>
+		 
+		 <% end %>
+</ol>
+<ol> 
+	<h2> You've not attempted : </h2>
+		<%- if current_user.quiza==0 %>
+		<h5><li>Cricket </li></h5>
+		<% end %> 
+		<%- if current_user.quizb==0 %>
+		 <h5><li>Football </li></h5>
+		 <% end %> 
+		<%- if current_user.quizc==0 %>
+		<h5><li>F.R.I.E.N.D.S </li></h5>
+		<% end %> 
+		<%- if current_user.quizd==0 %>
+		 <h5><li>GoT </li></h5>
+		<% end %> 
+</ol>
+</p>
+<%= pie_chart [["Cricket",current_user.quiza] , ["Football" , current_user.quizb] , ["F.R.I.E.N.D.S" , current_user.quizc] , ["GoT" , current_user.quizd]] %>
